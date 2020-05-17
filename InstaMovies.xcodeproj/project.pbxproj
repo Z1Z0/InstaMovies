@@ -116,9 +116,8 @@
 				E1C18C9624714B390079D974 /* Model */,
 				E1C18C9524714B320079D974 /* View */,
 				E1C18C9424714B2A0079D974 /* Controller */,
-				E1C18C6D24714A9E0079D974 /* Assets.xcassets */,
-				E1C18C6F24714A9E0079D974 /* LaunchScreen.storyboard */,
-				E1C18C7224714A9E0079D974 /* Info.plist */,
+				E1F9F8972471989C00069A38 /* Assets */,
+				E1F9F898247198B700069A38 /* Others */,
 			);
 			path = InstaMovies;
 			sourceTree = "<group>";
@@ -224,6 +223,23 @@
 				E1F9F89524718A1700069A38 /* ActivityIndicator.swift */,
 			);
 			path = CustomClasses;
+			sourceTree = "<group>";
+		};
+		E1F9F8972471989C00069A38 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				E1C18C6D24714A9E0079D974 /* Assets.xcassets */,
+				E1C18C6F24714A9E0079D974 /* LaunchScreen.storyboard */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		E1F9F898247198B700069A38 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				E1C18C7224714A9E0079D974 /* Info.plist */,
+			);
+			path = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
