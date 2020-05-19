@@ -29,7 +29,7 @@ class HomeView: UIView {
         moviesTableView.showsVerticalScrollIndicator = false
         moviesTableView.delegate = self
         moviesTableView.dataSource = self
-        moviesTableView.register(HomeViewTableViewCell.self, forCellReuseIdentifier: "HomeViewTableViewCell")
+        moviesTableView.registerCell(cellClass: HomeViewTableViewCell.self)
         moviesTableView.translatesAutoresizingMaskIntoConstraints = false
         return moviesTableView
     }()
@@ -65,7 +65,7 @@ extension HomeView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeViewTableViewCell", for: indexPath) as! HomeViewTableViewCell
+        let cell = tableView.dequeue() as HomeViewTableViewCell
         cell.config(homeVC.moviesDetails[indexPath.row])
         return cell
     }
@@ -77,5 +77,4 @@ extension HomeView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "All Movies"
     }
-    
 }

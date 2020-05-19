@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     var movies: MoviesModel?
     var moviesDetails = [MoviesDetailsModel]()
     let indicator = ActivityIndicator()
+    var currentPage: Int = 1
     
     lazy var mainView: HomeView = {
         let view = HomeView(frame: self.view.frame)
@@ -30,6 +31,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         fetchMoviesData()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMovie))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +41,7 @@ class HomeViewController: UIViewController {
 
     func fetchMoviesData() {
         indicator.setupIndicatorView(self.view, containerColor: .darkGray, indicatorColor: .white)
-        let url = URL(string: NetworkConstant.baseURL)
+        let url = URL(string: "http://api.themoviedb.org/3/discover/movie?api_key=a5e746e272891f2d149d513be046dabc&page=\(currentPage)")
         
         let session = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             do {
@@ -53,10 +55,19 @@ class HomeViewController: UIViewController {
                 }
             }catch{
                 //failed
-                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Close", style: .destructive, handler: nil)
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
         }
         session.resume()
+    }
+    
+    @objc func addMovie() {
+        
     }
 
 }

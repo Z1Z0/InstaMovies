@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E112FA642474165100A6CE49 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112FA632474165100A6CE49 /* UITableViewExtensions.swift */; };
+		E112FA67247419C000A6CE49 /* AddMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112FA66247419C000A6CE49 /* AddMovieViewController.swift */; };
+		E112FA6A247419FF00A6CE49 /* AddMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112FA69247419FF00A6CE49 /* AddMovieView.swift */; };
 		E1C18C6524714A9E0079D974 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C18C6424714A9E0079D974 /* AppDelegate.swift */; };
 		E1C18C6724714A9E0079D974 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C18C6624714A9E0079D974 /* SceneDelegate.swift */; };
 		E1C18C6924714A9E0079D974 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C18C6824714A9E0079D974 /* HomeViewController.swift */; };
@@ -41,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E112FA632474165100A6CE49 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
+		E112FA66247419C000A6CE49 /* AddMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieViewController.swift; sourceTree = "<group>"; };
+		E112FA69247419FF00A6CE49 /* AddMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieView.swift; sourceTree = "<group>"; };
 		E1C18C6124714A9E0079D974 /* InstaMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1C18C6424714A9E0079D974 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1C18C6624714A9E0079D974 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +94,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E112FA65247419A700A6CE49 /* AddMovieViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E112FA66247419C000A6CE49 /* AddMovieViewController.swift */,
+			);
+			path = AddMovieViewController;
+			sourceTree = "<group>";
+		};
+		E112FA68247419E900A6CE49 /* AddMovieView */ = {
+			isa = PBXGroup;
+			children = (
+				E112FA69247419FF00A6CE49 /* AddMovieView.swift */,
+			);
+			path = AddMovieView;
+			sourceTree = "<group>";
+		};
 		E1C18C5824714A9E0079D974 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				E1F9F88C247178D100069A38 /* HomeViewController */,
+				E112FA65247419A700A6CE49 /* AddMovieViewController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -152,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				E1F9F88224714D6A00069A38 /* HomeView */,
+				E112FA68247419E900A6CE49 /* AddMovieView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -213,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				E1F9F89124717E7A00069A38 /* UIImageExtension.swift */,
+				E112FA632474165100A6CE49 /* UITableViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -374,7 +399,9 @@
 			files = (
 				E1C18C6924714A9E0079D974 /* HomeViewController.swift in Sources */,
 				E1C18C9924714B7D0079D974 /* HomeView.swift in Sources */,
+				E112FA642474165100A6CE49 /* UITableViewExtensions.swift in Sources */,
 				E1F9F89224717E7A00069A38 /* UIImageExtension.swift in Sources */,
+				E112FA6A247419FF00A6CE49 /* AddMovieView.swift in Sources */,
 				E1F9F8892471787800069A38 /* MoviesModel.swift in Sources */,
 				E1C18C6524714A9E0079D974 /* AppDelegate.swift in Sources */,
 				E1F9F88524714D9500069A38 /* HomeViewTableViewCell.swift in Sources */,
@@ -382,6 +409,7 @@
 				E1F9F88B247178A200069A38 /* MoviesDetailsModel.swift in Sources */,
 				E1F9F890247179F100069A38 /* NetworkConstant.swift in Sources */,
 				E1C18C6724714A9E0079D974 /* SceneDelegate.swift in Sources */,
+				E112FA67247419C000A6CE49 /* AddMovieViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,7 +576,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 57RA7SGH3Y;
-				INFOPLIST_FILE = InstaMovies/Info.plist;
+				INFOPLIST_FILE = InstaMovies/Others/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -566,7 +594,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 57RA7SGH3Y;
-				INFOPLIST_FILE = InstaMovies/Info.plist;
+				INFOPLIST_FILE = InstaMovies/Others/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

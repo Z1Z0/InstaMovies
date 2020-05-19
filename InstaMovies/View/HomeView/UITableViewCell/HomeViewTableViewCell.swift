@@ -41,7 +41,6 @@ class HomeViewTableViewCell: UITableViewCell {
     lazy var movieTitleLabel: UILabel = {
         let movieTitleLabel = UILabel()
         movieTitleLabel.textColor = .darkGray
-        movieTitleLabel.text = "Iron Man"
         movieTitleLabel.numberOfLines = 0
         movieTitleLabel.font = UIFont(name: "AvenirNext-Bold", size: 14)
         movieTitleLabel.textAlignment = .left
@@ -60,7 +59,6 @@ class HomeViewTableViewCell: UITableViewCell {
     lazy var movieReleaseDateLabel: UILabel = {
         let movieReleaseDateLabel = UILabel()
         movieReleaseDateLabel.textColor = .darkGray
-        movieReleaseDateLabel.text = "2/9/2006"
         movieReleaseDateLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 12)
         movieReleaseDateLabel.textAlignment = .left
         movieReleaseDateLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +76,6 @@ class HomeViewTableViewCell: UITableViewCell {
     lazy var movieOverviewLabel: UILabel = {
         let movieOverviewLabel = UILabel()
         movieOverviewLabel.textColor = .gray
-        movieOverviewLabel.text = "Iron Man is a 2008 American superhero film based on the Marvel Comics character of the same name. Produced by Marvel Studios and distributed by Paramount Pictures, it is the first film in the Marvel Cinematic Universe."
         movieOverviewLabel.numberOfLines = 0
         movieOverviewLabel.font = UIFont(name: "AvenirNext-Regular", size: 12)
         movieOverviewLabel.textAlignment = .left
