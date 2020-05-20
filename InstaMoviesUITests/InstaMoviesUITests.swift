@@ -22,6 +22,16 @@ class InstaMoviesUITests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    func testCells() {
+        let application = XCUIApplication()
+        application.launch()
+        let tablesQuery = XCUIApplication().tables
+        let movieTitle = tablesQuery.staticTexts["Ad Astra"]
+        let movieDate = tablesQuery.staticTexts["2019-09-17"]
+        XCTAssertEqual("Ad Astra", movieTitle.label)
+        XCTAssertEqual("2019-09-17", movieDate.label)
+    }
 
     func testExample() {
         // UI tests must launch the application that they test.

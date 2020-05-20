@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 
-@objc protocol dateDelegate: class {
+@objc protocol MovieDelegate: class {
     @objc func dateChange(datePicker: UIDatePicker)
+    @objc func movieImageTapped()
 }
 
 class AddMovieView: UIView {
@@ -25,22 +26,20 @@ class AddMovieView: UIView {
     }
     
     var datePicker: UIDatePicker?
-    weak var delegate: dateDelegate?
+    weak var delegate: MovieDelegate?
+    
+    var addingMovieVC = AddMovieViewController()
     
     lazy var movieImageButton: UIButton = {
         let movieImageButton = UIButton()
         movieImageButton.setTitle("", for: .normal)
-        movieImageButton.translatesAutoresizingMaskIntoConstraints = false
         movieImageButton.backgroundColor = .clear
-        movieImageButton.addTarget(self, action: #selector(add), for: .touchUpInside)
+        movieImageButton.addTarget(delegate, action: #selector(delegate?.movieImageTapped), for: .touchUpInside)
         movieImageButton.layer.cornerRadius = frame.width / 7
         movieImageButton.layer.masksToBounds = true
+        movieImageButton.translatesAutoresizingMaskIntoConstraints = false
         return movieImageButton
     }()
-    
-    @objc func add() {
-        print("Hello")
-    }
     
     func setupMovieImageButtonConstaints() {
         NSLayoutConstraint.activate([
@@ -148,12 +147,32 @@ class AddMovieView: UIView {
         ])
     }
     
+    lazy var submitMovieButton: UIButton = {
+        let submitMovieButton = UIButton(type: .system)
+        submitMovieButton.setTitle("Add movie", for: .normal)
+        submitMovieButton.setTitleColor(.white, for: .normal)
+        submitMovieButton.backgroundColor = .darkGray
+        submitMovieButton.layer.cornerRadius = 8.0
+        submitMovieButton.translatesAutoresizingMaskIntoConstraints = false
+        return submitMovieButton
+    }()
+    
+    func setupSubmitMovieButton() {
+        NSLayoutConstraint.activate([
+            submitMovieButton.topAnchor.constraint(equalTo: movieDate.bottomAnchor, constant: 16),
+            submitMovieButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            submitMovieButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            submitMovieButton.heightAnchor.constraint(equalToConstant: 55)
+        ])
+    }
+    
     func addSubviews() {
         addSubview(movieImageButton)
         addSubview(movieImage)
         addSubview(movieTitle)
         addSubview(movieOverview)
         addSubview(movieDate)
+        addSubview(submitMovieButton)
     }
     
     func layoutUI() {
@@ -163,6 +182,7 @@ class AddMovieView: UIView {
         setupMovieTitleConstraints()
         setupMovieOverviewConstraints()
         setupMovieDateConstraints()
+        setupSubmitMovieButton()
     }
     
 }

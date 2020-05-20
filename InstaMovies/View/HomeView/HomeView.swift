@@ -29,6 +29,7 @@ class HomeView: UIView {
         moviesTableView.showsVerticalScrollIndicator = false
         moviesTableView.delegate = self
         moviesTableView.dataSource = self
+        moviesTableView.prefetchDataSource = self
         moviesTableView.registerCell(cellClass: HomeViewTableViewCell.self)
         moviesTableView.translatesAutoresizingMaskIntoConstraints = false
         return moviesTableView
@@ -54,20 +55,41 @@ class HomeView: UIView {
     
 }
 
-extension HomeView: UITableViewDelegate, UITableViewDataSource {
+extension HomeView: UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return homeVC.movies?.results?.count ?? 0
+        switch section {
+        case 0:
+            return homeVC.moviesTitle.count
+        case 1:
+            return homeVC.movies?.results?.count ?? 0
+        default:
+            return homeVC.movies?.results?.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue() as HomeViewTableViewCell
-        cell.config(homeVC.moviesDetails[indexPath.row])
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeue() as HomeViewTableViewCell
+            cell.movieTitleLabel.text = homeVC.moviesTitle[indexPath.row]
+            cell.movieOverviewLabel.text = homeVC.moviesOverview[indexPath.row]
+            cell.movieReleaseDateLabel.text = homeVC.moviesDate[indexPath.row]
+            cell.movieImage.image = homeVC.moviesImage[indexPath.row]
+            return cell
+        case 1:
+            let cell = tableView.dequeue() as HomeViewTableViewCell
+            cell.config(homeVC.moviesDetails[indexPath.row])
+            return cell
+        default:
+            let cell = tableView.dequeue() as HomeViewTableViewCell
+            cell.config(homeVC.moviesDetails[indexPath.row])
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -75,6 +97,28 @@ extension HomeView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "All Movies"
+        switch section {
+        case 0:
+            return ""
+        case 1:
+            return "All Movies"
+        default:
+            return ""
+        }
     }
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        
+        for index in indexPaths {
+            if index.row >= homeVC.moviesDetails.count - 1 && !homeVC.isFetchingMovies {
+                homeVC.currentPage += 1
+                homeVC.fetchMoviesData()
+                DispatchQueue.main.async {
+                    self.moviesTableView.reloadData()
+                }
+                break
+            }
+        }
+    }
+    
 }
